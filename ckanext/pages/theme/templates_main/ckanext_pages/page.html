@@ -2,6 +2,16 @@
 
 {% block subtitle %}{{ c.page.title }}{% endblock %}
 
+
+    {% block toolbar %}
+        <div class="toolbar">
+            <ol class="breadcrumb">
+                <li class="home"><a href="/" id="enlaceHormigas"><i class="fa fa-home"></i><span> Inicio</span></a></li>                    
+                <li class="active"><a id="enlaceHormigasDos" class=" active" href="#">{{ c.page.title }}</a></li>					
+            </ol>
+        </div>
+    {% endblock %}
+
 {% block primary %}
   <section class="module-content">
     {% if h.check_access('ckanext_pages_update') %}
@@ -11,7 +21,6 @@
     {% if c.page.content %}
       <div class="ckanext-pages-content">
         {% set editor = h.get_wysiwyg_editor() %}
-        <!-- editor set to "{{ editor }}"-->
         {% if editor %}
           <div>
               {{c.page.content|safe}}
